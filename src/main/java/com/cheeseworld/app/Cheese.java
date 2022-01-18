@@ -10,13 +10,20 @@ public class Cheese {
     private Long id;
 
     private String name;
+    private boolean stinky;
+    private boolean french;
+    private int weightInGr;
 
     public Cheese() {
 
     }
 
     public Cheese(String info) {
+
         this.name = info.split("\\|")[0];
+        this.stinky = info.contains ("stinky") || info.contains ("smelly");
+        this.french = info.contains ("french");
+        this.weightInGr = Integer.parseInt (info.split ("\\|")[2].split("gr") [0]);
     }
 
     public Long getId() {
@@ -32,6 +39,10 @@ public class Cheese {
     }
 
     public boolean isStinky() {
-        return false;
+        return stinky;
     }
+
+    public boolean isFrench() {return french;}
+
+    public int getWeightInGr() {return weightInGr;}
 }

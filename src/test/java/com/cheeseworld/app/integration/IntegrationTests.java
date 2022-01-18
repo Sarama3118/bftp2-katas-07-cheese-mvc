@@ -59,7 +59,6 @@ class IntegrationTests {
     }
 
     @Test
-    @Disabled
     void showsAllTheStinkyCheeseProducts() throws Exception {
         server.perform(get("/cheese/all"))
                 .andExpect(view().name("catalog"))

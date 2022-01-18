@@ -17,10 +17,32 @@ public class CheeseTests {
     }
 
     @Test
-    @Disabled
+
     void aCheeseIsConsideredStinkyIfContainsStinkyOrSmellyInTheDescription () {
         assertThat(new Cheese("Rochefort|stinky french cheese|250gr").isStinky(), is(true));
         assertThat(new Cheese("Manchego|gourmet spanish cheese|100gr").isStinky(), is(false));
         assertThat(new Cheese("Cabrales|super smelly cheese|100gr").isStinky(), is(true));
     }
+
+    @Test
+
+    void aCheeseIsConsideredFrenchIfContainsFrenchDescription () {
+        assertThat(new Cheese("Rochefort|stinky french cheese|250gr").isFrench(), is(true));
+        assertThat(new Cheese("Manchego|gourmet spanish cheese|100gr").isFrench(), is(false));
+        assertThat(new Cheese("Cabrales|super smelly cheese|100gr").isFrench(), is(false));
+    }
+    @Test
+
+    void aCheeseHasItsWeightInGr () {
+        assertThat(new Cheese("Rochefort|stinky french cheese|250gr").getWeightInGr(), is(250));
+        assertThat(new Cheese("Manchego|gourmet spanish cheese|100gr").getWeightInGr(), is(100));
+    }
+
+    @Test
+
+    void aCheeseHasDiscount () {
+        assertThat(new Cheese("Rochefort|stinky french cheese|250gr").getDiscount(), is(false));
+        assertThat(new Cheese("Manchego|gourmet spanish cheese discount |100gr").getDiscount(), is (true));
+    }
+
 }
